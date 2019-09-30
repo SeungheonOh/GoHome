@@ -10,6 +10,33 @@ easy setup system that does not require any tidious html coding processes, just 
 GoHome is only written with go standard libraries! So you can just download ordinary go compiler, run it!
 You can also add gohome to system service so it starts up automatically on your system's startup.
 
+# Example Entrie File
+```
+!Application
+terminal Launch('st')
+chrome Launch('google-chrome-stable')
+htop Launch('st -e htop')
+vim Launch('st -e vim')
+code Launch('code')
+pipes Launch('st -e pipes.sh')
+cowsayToConsole console.log(Launch('cowsay hello world'))
+
+!Website
+reddit Launch('xdg-open https://www.reddit.com')
+google Launch('xdg-open https://www.google.com')
+ArchWiki Launch('xdg-open https://wiki.archlinux.org')
+*nix Launch('xdg-open https://www.reddit.com/r/unixporn')
+
+!FunStuff
+youtube Launch('xdg-open https://www.youtube.com')
+DankMemes Launch('xdg-open https://www.reddit.com/r/dankmemes')
+MoonBuggy Launch('st -e moon-buggy')
+
++CPU: ${Launch('bash -c ./sample_scripts/cpu.sh')}%
++Memory: ${Launch('bash -c ./sample_scripts/memory.sh')}%
+
+```
+
 # Options
 ```
 -c Set CSS file
