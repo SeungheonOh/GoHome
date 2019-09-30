@@ -69,6 +69,10 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	html, err := ioutil.ReadFile(HTMLTemplate)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	file, err := os.Open(EntrieFile)
 	if err != nil {
@@ -105,7 +109,7 @@ func main() {
 		}
 	}
 
-	tmpl, err := template.New("default.html").ParseFiles("default.html")
+	tmpl, err := template.New("").Parse(string(html))
 	if err != nil {
 		log.Fatal(err)
 	}
