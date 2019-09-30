@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+	<body>
+		<style>{{.CSS}}</style>
+		<script>
+			function Redirect(p) {window.location.hostname = p}
+			function Launch(URL)
+			{
+				var xmlHttp = new XMLHttpRequest();
+				xmlHttp.open( "POST", location.href + 'run/' + URL, false ); // false for synchronous request
+				xmlHttp.send( null );
+				return xmlHttp.responseText;
+			}
+			function test(URL, id)
+			{
+				document.getElementById(id).innerHTML = Launch(URL)
+			}
+		</script>
+
+		{{if ne .Title ""}}
+		<h1>
+			{{.Title}}
+		</h1>
+		{{end}}
+
+		<div>
+			<table>
+				<tr>
+					{{range .EntrieGroups}}
+					<td>{{.SubTitle}}</td>
+					{{end}}
+				</tr>
+				<tr>
+					{{range .EntrieGroups}}
+					<td>
+						{{range .Entries}}
+						<button type="button" onclick="{{.Command}}">{{.Name}}</button>
+						</br>
+						{{end}}
+					</td>
+					{{end}}
+				</tr>
+			</table>
+		</div>
+
+		<div>
+			{{range .Labels}}
+			<label id="{{.Prompt}}">Loading</label>
+			</br>
+			{{end}}
+		</div>
+		
+		<script>
+			function UpdateLabel(id, str) {
+				document.getElementById(id).innerHTML = str;
+			}
+			{{range .Labels}}
+				UpdateLabel("{{.Prompt}}", `{{.Prompt}}`)
+				{{end}}
+			window.setInterval(() => {
+				{{range .Labels}}
+				UpdateLabel("{{.Prompt}}", `{{.Prompt}}`)
+				{{end}}
+			}, 3000);
+		</script>
+	</body>
+</html>
+

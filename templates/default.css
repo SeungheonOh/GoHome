@@ -1,0 +1,52 @@
+body {
+	background-color: #202020;
+}
+
+h1 {
+	padding: 25px;
+	text-align: center;
+}
+
+div {
+	padding: 20px;
+	margin: 30px;
+}
+
+label {
+	padding: 45px;
+	color: #cccccc;
+	padding: 5px 5px;
+	text-align: center;
+	display: inline-block;
+	font-size: 20px;
+}
+
+table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+}
+
+tr {
+	vertical-align: text-top;
+}
+
+td, th {
+	padding: 3px;
+	color: #cccccc;
+	font-weight: bold;
+	text-align: center;
+	font-size: 23px;
+}
+
+button {
+	width:200px;
+	background-color: #202020;
+	border: none;
+	color: #888888;
+	padding: 5px 5px;
+	text-align: center;
+	display: inline-block;
+	font-size: 20px;
+	cursor: pointer;
+}
