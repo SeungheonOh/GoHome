@@ -9,6 +9,7 @@
 			{
 				var xmlHttp = new XMLHttpRequest();
 				xmlHttp.open( "POST", location.href + 'run/' + URL, false ); // false for synchronous request
+				xmlHttp.setRequestHeader("X-CSRF-Token", "{{.CSRFToken}}" );
 				xmlHttp.send( null );
 				return xmlHttp.responseText;
 			}
