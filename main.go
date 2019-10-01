@@ -49,6 +49,7 @@ var (
 	CSSFile      string
 	HTMLTemplate string
 	EntrieFile   string
+	ServerPort   string
 )
 
 func init() {
@@ -62,9 +63,14 @@ func init() {
 
 	flag.StringVar(&EntrieFile, "e", "", "Set Tamplate")
 	flag.StringVar(&EntrieFile, "entrie", "./templates/entrie.txt", "Set Entries")
+
+	flag.StringVar(&ServerPort, "p", "", "Set server port")
+	flag.StringVar(&ServerPort, "port", "8080", "Set server port")
 }
 
 func main() {
+	flag.Parse()
+
 	css, err := ioutil.ReadFile(CSSFile)
 	if err != nil {
 		log.Fatal(err)
@@ -146,5 +152,7 @@ func main() {
 
 		fmt.Fprintf(w, string(out.Output))
 	})
-	log.Fatal(http.ListenAndServe(":8080", nil))
+
+	serverAddress := ":" + ServerPort
+	log.Fatal(http.ListenAndServe(serverAddress, nil))
 }
