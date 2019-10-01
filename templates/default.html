@@ -5,8 +5,6 @@
 		<meta charset="utf-8" />
 		<title>Homepage</title>
 		<style>{{.CSS}}</style>
-	</head>
-	<body>
 		<script>
 			function Redirect(p) {window.location.hostname = p}
 			function Launch(URL)
@@ -21,7 +19,8 @@
 				document.getElementById(id).innerHTML = Launch(URL)
 			}
 		</script>
-
+	</head>
+	<body>
 		{{if ne .Title ""}}
 		<h1>
 			{{.Title}}
