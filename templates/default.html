@@ -1,8 +1,12 @@
 
 <!DOCTYPE html>
 <html>
-	<body>
+	<head>
+		<meta charset="utf-8" />
+		<title>Homepage</title>
 		<style>{{.CSS}}</style>
+	</head>
+	<body>
 		<script>
 			function Redirect(p) {window.location.hostname = p}
 			function Launch(URL)
@@ -24,33 +28,31 @@
 		</h1>
 		{{end}}
 
-		<div>
-			<table>
-				<tr>
-					{{range .EntrieGroups}}
-					<td>{{.SubTitle}}</td>
-					{{end}}
-				</tr>
-				<tr>
-					{{range .EntrieGroups}}
-					<td>
-						{{range .Entries}}
-						<button type="button" onclick="{{.Command}}">{{.Name}}</button>
-						</br>
-						{{end}}
-					</td>
-					{{end}}
-				</tr>
-			</table>
-		</div>
+		<main class="wrapper">
 
-		<div>
-			{{range .Labels}}
-			<label id="{{.Prompt}}">Loading</label>
-			</br>
-			{{end}}
-		</div>
+			<div class="flex center">
+				{{range .EntrieGroups}}
+				<div>
+					<h2 class="title">{{.SubTitle}}</h2>
+					<ul class="list">
+						{{range .Entries}}
+						<li>
+							<button type="button" onclick="{{.Command}}">{{.Name}}</button>
+						</li>
+						{{end}}
+					</ul>
+				</div>
+				{{end}}
+			</div>
+
+			<div class="stats">
+				{{range .Labels}}
+				<div id="{{.Prompt}}">Loading</div>
+				{{end}}
+			</div>
 		
+		</main>
+
 		<script>
 			function UpdateLabel(id, str) {
 				document.getElementById(id).innerHTML = str;
