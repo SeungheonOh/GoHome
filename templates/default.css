@@ -1,5 +1,6 @@
 body {
 	background-color: #202020;
+	font-family: arial, sans-serif;
 }
 
 h1 {
@@ -7,46 +8,54 @@ h1 {
 	text-align: center;
 }
 
-div {
-	padding: 20px;
-	margin: 30px;
-}
-
-label {
-	padding: 45px;
-	color: #cccccc;
-	padding: 5px 5px;
-	text-align: center;
-	display: inline-block;
-	font-size: 20px;
-}
-
-table {
-		font-family: arial, sans-serif;
-		border-collapse: collapse;
-		width: 100%;
-}
-
-tr {
-	vertical-align: text-top;
-}
-
-td, th {
-	padding: 3px;
-	color: #cccccc;
-	font-weight: bold;
-	text-align: center;
-	font-size: 23px;
-}
 
 button {
-	width:200px;
 	background-color: #202020;
 	border: none;
 	color: #888888;
 	padding: 5px 5px;
-	text-align: center;
-	display: inline-block;
 	font-size: 20px;
 	cursor: pointer;
+}
+
+.center {
+	text-align: center;
+}
+
+.wrapper {
+	padding: 0 50px;
+}
+
+.wrapper > div {
+	margin: 50px 0;
+}
+
+.flex {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	box-sizing: border-box;
+}
+
+.list {
+	width: 200px;
+	list-style-type: none;
+	display: block;
+	margin: 0;
+	padding: 0;
+
+}
+
+.title {
+	color: #cccccc;
+	font-weight: bold;
+	font-size: 23px;
+	margin: 0;
+	padding: 6px 0;
+}
+
+.stats {
+	color: #cccccc;
+	padding: 5px 5px;
+	font-size: 20px;
 }
