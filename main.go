@@ -50,11 +50,10 @@ var (
 	HTMLTemplate string
 	EntrieFile   string
 	ServerPort   string
+	NoLog        bool
 )
 
 func init() {
-	log.SetFlags(log.Ltime | log.Llongfile)
-
 	flag.StringVar(&CSSFile, "c", "", "Set CSS")
 	flag.StringVar(&CSSFile, "css", "./templates/default.css", "Set CSS")
 
@@ -66,10 +65,19 @@ func init() {
 
 	flag.StringVar(&ServerPort, "p", "", "Set server port")
 	flag.StringVar(&ServerPort, "port", "8080", "Set server port")
+
+	flag.BoolVar(&NoLog, "n", false, "Disable Log")
+	flag.BoolVar(&NoLog, "nolog", false, "Disable Log")
 }
 
 func main() {
 	flag.Parse()
+
+	log.SetFlags(log.Ltime | log.Llongfile)
+	if NoLog {
+		log.SetFlags(0)
+		log.SetOutput(ioutil.Discard)
+	}
 
 	css, err := ioutil.ReadFile(CSSFile)
 	if err != nil {
