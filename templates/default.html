@@ -2,68 +2,68 @@
 <html>
   <head>
     <meta charset="UTF-8">
-		<style>{{.CSS}}</style>
-		<script>
-			function Redirect(p) {window.location.href = p;}
-			function Launch(URL)
-			{
-				var xmlHttp = new XMLHttpRequest();
-				xmlHttp.open( "POST", location.href + 'run/' + URL, false ); // false for synchronous request
-				xmlHttp.send( null );
-				return xmlHttp.responseText;
-			}
-			function test(URL, id)
-			{
-				document.getElementById(id).innerHTML = Launch(URL)
-			}
-		</script>
+    <style>{{.CSS}}</style>
+    <script>
+      function Redirect(p) {window.location.href = p;}
+      function Launch(URL)
+      {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "POST", location.href + 'run/' + URL, false ); // false for synchronous request
+        xmlHttp.send( null );
+        return xmlHttp.responseText;
+      }
+      function test(URL, id)
+      {
+        document.getElementById(id).innerHTML = Launch(URL)
+      }
+    </script>
     <title>New Tab</title>
   </head>
 
   <body>
-		<div class="container">
-			<div class="prompt">[<span>GoHome</span> ~]$ tree</div>
-			<div class="tree">
-				<h1>.</h1>
-				<ul>
-					{{range .EntrieGroups}}
-					<li>
-						<h1>{{.SubTitle}}</h1>
-						<ul>
-							{{range .Entries}}
-							<li><a onclick="{{.Command}}">{{.Name}}</a></li>
-							{{end}}
-						</ul>
-					</li>
-					{{end}}
-				</ul>
-			</div>
-			<br/>
-			{{range .Labels}}
-			<span id="{{.Prompt}}">Loading</span><br/>
-			{{end}}
+    <div class="container">
+      <div class="prompt">[<span>GoHome</span> ~]$ tree</div>
+      <div class="tree">
+        <h1>.</h1>
+        <ul>
+          {{range .EntrieGroups}}
+          <li>
+            <h1>{{.SubTitle}}</h1>
+            <ul>
+              {{range .Entries}}
+              <li><a onclick="{{.Command}}">{{.Name}}</a></li>
+              {{end}}
+            </ul>
+          </li>
+          {{end}}
+        </ul>
+      </div>
+      <br/>
+      {{range .Labels}}
+      <span id="{{.Prompt}}">Loading</span><br/>
+      {{end}}
 
-			<div class="prompt">[<span>GoHome</span> ~]$ ddg</div>
-			<form action="https://duckduckgo.com/" method="GET">
-				<h1>search: </h1>
-				<input type="text" name="q" autofocus="autofocus">
-			</form>
-		</div>
+      <div class="prompt">[<span>GoHome</span> ~]$ ddg</div>
+      <form action="https://duckduckgo.com/" method="GET">
+        <h1>search: </h1>
+        <input type="text" name="q" autofocus="autofocus">
+      </form>
+    </div>
 
 
-		
-		<script>
-			function UpdateLabel(id, str) {
-				document.getElementById(id).innerHTML = str;
-			}
-			{{range .Labels}}
-				UpdateLabel("{{.Prompt}}", `{{.Prompt}}`)
-				{{end}}
-			window.setInterval(() => {
-				{{range .Labels}}
-				UpdateLabel("{{.Prompt}}", `{{.Prompt}}`)
-				{{end}}
-			}, 3000);
-		</script>
+    
+    <script>
+      function UpdateLabel(id, str) {
+        document.getElementById(id).innerHTML = str;
+      }
+      {{range .Labels}}
+      UpdateLabel("{{.Prompt}}", `{{.Prompt}}`)
+      {{end}}
+      window.setInterval(() => {
+        {{range .Labels}}
+        UpdateLabel("{{.Prompt}}", `{{.Prompt}}`)
+        {{end}}
+      }, 3000);
+    </script>
   </body>
 </html>
