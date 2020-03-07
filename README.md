@@ -5,6 +5,7 @@ shutting your system down, or fetching your system data to your local homepage. 
 easy setup system that does not require any tidious html coding processes, just simple and nice entrie lists-you can customize css as you desire. 
 
 ![](https://github.com/SeungheonOh/GoHome/blob/master/img/gohome.jpg)
+Theme from [Tanish](https://gitlab.com/Tanish2002/dot-files), Thanks!
 
 # Installation
 GoHome is only written with go standard libraries! So you can just download ordinary go compiler, run it!

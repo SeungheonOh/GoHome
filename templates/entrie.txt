@@ -1,23 +1,17 @@
+!GitLab
+MyDots Redirect('https://www.github.com/SeungheonOh/Dots')
+
+!Reddit
+*Nix Redirect('https://www.reddit.com/r/unixporn')
+
+!AnyOtherCustomGroups
+a Redirect('https://www.github.com/SeungheonOh/GoHome')
+b Redirect('https://www.github.com/SeungheonOh/GoHome')
+c Redirect('https://www.github.com/SeungheonOh/GoHome')
+
 !Application
 terminal Launch('st')
-chrome Launch('google-chrome-stable')
 htop Launch('st -e htop')
 vim Launch('st -e vim')
-code Launch('code')
-pipes Launch('st -e pipes.sh')
-cowsayToConsole console.log(Launch('cowsay hello world'))
 
-!Website
-reddit Launch('xdg-open https://www.reddit.com')
-google Launch('xdg-open https://www.google.com')
-ArchWiki Launch('xdg-open https://wiki.archlinux.org')
-*nix Launch('xdg-open https://www.reddit.com/r/unixporn')
-
-!FunStuff
-youtube Launch('xdg-open https://www.youtube.com')
-DankMemes Launch('xdg-open https://www.reddit.com/r/dankmemes')
-MoonBuggy Launch('st -e moon-buggy')
-
-+CPU: ${Launch('bash -c ./sample_scripts/cpu.sh')}%
 +Memory: ${Launch('bash -c ./sample_scripts/memory.sh')}%
-

@@ -1,12 +1,10 @@
-
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>Homepage</title>
+  <head>
+    <meta charset="UTF-8">
 		<style>{{.CSS}}</style>
 		<script>
-			function Redirect(p) {window.location.hostname = p}
+			function Redirect(p) {window.location.href = p;}
 			function Launch(URL)
 			{
 				var xmlHttp = new XMLHttpRequest();
@@ -19,39 +17,41 @@
 				document.getElementById(id).innerHTML = Launch(URL)
 			}
 		</script>
-	</head>
-	<body>
-		{{if ne .Title ""}}
-		<h1>
-			{{.Title}}
-		</h1>
-		{{end}}
+    <title>New Tab</title>
+  </head>
 
-		<main class="wrapper">
-
-			<div class="flex center">
-				{{range .EntrieGroups}}
-				<div>
-					<h2 class="title">{{.SubTitle}}</h2>
-					<ul class="list">
-						{{range .Entries}}
-						<li>
-							<button type="button" onclick="{{.Command}}">{{.Name}}</button>
-						</li>
-						{{end}}
-					</ul>
-				</div>
-				{{end}}
+  <body>
+		<div class="container">
+			<div class="prompt">[<span>GoHome</span> ~]$ tree</div>
+			<div class="tree">
+				<h1>.</h1>
+				<ul>
+					{{range .EntrieGroups}}
+					<li>
+						<h1>{{.SubTitle}}</h1>
+						<ul>
+							{{range .Entries}}
+							<li><a onclick="{{.Command}}">{{.Name}}</a></li>
+							{{end}}
+						</ul>
+					</li>
+					{{end}}
+				</ul>
 			</div>
+			<br/>
+			{{range .Labels}}
+			<span id="{{.Prompt}}">Loading</span><br/>
+			{{end}}
 
-			<div class="stats">
-				{{range .Labels}}
-				<div id="{{.Prompt}}">Loading</div>
-				{{end}}
-			</div>
+			<div class="prompt">[<span>GoHome</span> ~]$ ddg</div>
+			<form action="https://duckduckgo.com/" method="GET">
+				<h1>search: </h1>
+				<input type="text" name="q" autofocus="autofocus">
+			</form>
+		</div>
+
+
 		
-		</main>
-
 		<script>
 			function UpdateLabel(id, str) {
 				document.getElementById(id).innerHTML = str;
@@ -65,6 +65,5 @@
 				{{end}}
 			}, 3000);
 		</script>
-	</body>
+  </body>
 </html>
-
